@@ -8,11 +8,35 @@
   --off-black: hsl(0, 0%, 8%);
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 body {
   background-color: var(--off-white);
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
+}
+
+body p {
+  margin: 0;
+  padding: 0;
+}
+
+header h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 30px;
+  padding-top: 30px;
 }
 
 main {
@@ -26,6 +50,8 @@ main {
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 100px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .age-form {
@@ -35,7 +61,7 @@ main {
 }
 
 .age-form input {
-  width: 80px;
+  width: calc(100% - 10px);
   padding: 10px 5px;
   border: 1px solid var(--light-grey);
   border-radius: 5px;
@@ -46,26 +72,50 @@ main {
   outline: none;
 }
 
+.input-wrap {
+  width: 100%;
+}
+
 .input-wrap label {
   color: var(--smokey-grey);
   font-size: 12px;
   font-weight: 500;
 }
 
+.input-wrap .input-error-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-error-wrap .error {
+  font-size: 8px;
+  font-style: italic;
+}
+
+.input-error-wrap input:focus {
+  border-color: var(--purple);
+}
+
 .submit-btn-wrap {
   border-bottom: 2px solid var(--light-grey);
-  padding: 40px 20px;
+  padding: 20px;
   position: relative;
 }
 
 .submit-btn {
   position: absolute;
-  top: 60%;
+  top: 37%;
   left: 40%;
   border-radius: 50%;
 }
 
-.submit-btn button {
+.submit-btn .btn {
+  width: 30px;
+  display: flex;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   border: none;
   padding: 10px;
@@ -73,11 +123,24 @@ main {
   cursor: pointer;
 }
 
-.age-container {
-  margin-top: 50px;
+.btn img {
+  width: 100%;
 }
 
-.age-container span {
+.age-container {
+  margin-top: 25px;
+}
+
+.output-age {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 30px;
+}
+
+.output-age .year-value,
+.month-value,
+.day-value {
   color: var(--purple);
 }
 
@@ -89,4 +152,49 @@ main {
 .attribution a {
   color: var(--purple);
   text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .submit-btn {
+    top: 5px;
+  }
+
+  .submit-btn .btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .age-form .input-wrap label {
+    font-size: 14px;
+  }
+  .age-form {
+    width: 80%;
+    gap: 30px;
+  }
+
+  .main-container {
+    padding: 40px;
+    border-bottom-right-radius: 200px;
+  }
+
+  .main-container .age-form input {
+    padding: 17px 10px;
+  }
+
+  .input-error-wrap input {
+    font-size: 16px;
+  }
+
+  .input-error-wrap .error {
+    font-size: 10px;
+  }
+
+  .submit-btn-wrap .submit-btn {
+    right: 0;
+    left: auto;
+  }
+
+  .output-age {
+    font-size: 80px;
+  }
 }
