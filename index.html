@@ -31,7 +31,8 @@
             <div class="input-error-wrap">
               <input
                 type="number"
-                maxlength="2"
+                min="1"
+                max="31"
                 id="day"
                 class="day-input"
                 placeholder="DD"
@@ -45,6 +46,8 @@
             <div class="input-error-wrap">
               <input
                 type="number"
+                min="1"
+                max="12"
                 id="month"
                 placeholder="MM"
                 class="month-input"
@@ -58,6 +61,8 @@
             <div class="input-error-wrap">
               <input
                 type="number"
+                min="1900"
+                max="2099"
                 id="year"
                 placeholder="YYYY"
                 class="year-input"
@@ -68,7 +73,7 @@
           </div>
         </div>
         <div class="submit-btn-wrap">
-          <div class="submit-btn">
+          <div class="submit-btn" onclick="validateDate()">
             <div class="btn" type="submit">
               <img src="./assets/images/icon-arrow.svg" alt="Icon Arrow" />
             </div>
@@ -89,6 +94,7 @@
           </div>
         </div>
       </div>
+      <p id="result"></p>
     </main>
 
     <footer>
