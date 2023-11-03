@@ -2,16 +2,28 @@ function calculateAge(birthDate) {
   const currentDate = new Date();
   const birthDateObj = new Date(birthDate);
 
-  const ageInMilliseconds = currentDate - birthDateObj;
-  const ageInSeconds = ageInMilliseconds / 1000;
-  const ageInMinutes = ageInSeconds / 60;
-  const ageInHours = ageInMinutes / 60;
-  const ageInDays = ageInHours / 24;
+  const years = currentDate.getFullYear() - birthDateObj.getFullYear();
+  const birthMonth = birthDateObj.getMonth();
+  const currentMonth = currentDate.getMonth();
+  let months = currentMonth - birthMonth;
+  const currentDay = currentDate.getDate();
+  const birthDay = birthDateObj.getDate();
 
-  const years = Math.floor(ageInDays / 365);
-  const remainingDays = ageInDays % 365;
-  const months = Math.floor(remainingDays / 30);
-  const days = Math.floor(remainingDays % 30);
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  let days = currentDay - birthDay;
+  if (days < 0) {
+    const prevMonthLastDay = new Date(
+      currentDate.getFullYear(),
+      currentMonth,
+      0
+    ).getDate();
+    days += prevMonthLastDay;
+    months -= 1;
+  }
 
   return { years, months, days };
 }
