@@ -30,45 +30,36 @@
             <label for="day">Day</label>
             <div class="input-error-wrap">
               <input
-                type="number"
-                min="1"
-                max="31"
+                type="text"
                 id="day"
-                class="day-input"
+                class="day-input input-field border-error"
                 placeholder="DD"
               />
-              <p class="error">This field is required</p>
-              <p class="error">Must be a valid date</p>
+              <p class="day-error"></p>
             </div>
           </div>
           <div class="input-wrap">
             <label for="month">Month</label>
             <div class="input-error-wrap">
               <input
-                type="number"
-                min="1"
-                max="12"
+                type="text"
                 id="month"
                 placeholder="MM"
-                class="month-input"
+                class="month-input input-field"
               />
-              <p class="error">This field is required</p>
-              <p class="error">Must be a valid month</p>
+              <p class="month-error"></p>
             </div>
           </div>
           <div class="input-wrap">
             <label for="year">Year</label>
             <div class="input-error-wrap">
               <input
-                type="number"
-                min="1900"
-                max="2099"
+                type="text"
                 id="year"
                 placeholder="YYYY"
-                class="year-input"
+                class="year-input input-field"
               />
-              <p class="error">This field is required</p>
-              <p class="error">Must be in the past</p>
+              <p class="year-error"></p>
             </div>
           </div>
         </div>

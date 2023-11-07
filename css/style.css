@@ -88,9 +88,12 @@ main {
   gap: 5px;
 }
 
-.input-error-wrap .error {
+.input-error-wrap .day-error,
+.month-error,
+.year-error {
   font-size: 8px;
   font-style: italic;
+  color: red;
 }
 
 .input-error-wrap input:focus {
@@ -154,7 +157,17 @@ main {
   text-decoration: none;
 }
 
+.input-error-wrap .border-error:focus {
+  border-color: red;
+}
+
 @media (min-width: 768px) {
+  .input-error-wrap .day-error,
+  .month-error,
+  .year-error {
+    font-size: 11px;
+  }
+
   .submit-btn {
     top: 5px;
   }
@@ -179,6 +192,10 @@ main {
 
   .main-container .age-form input {
     padding: 17px 10px;
+  }
+
+  .input-error-wrap {
+    height: 60px;
   }
 
   .input-error-wrap input {

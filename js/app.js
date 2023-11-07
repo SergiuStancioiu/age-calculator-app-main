@@ -37,9 +37,53 @@ function validateDate() {
   const showMonths = document.querySelector(".month-value");
   const showDays = document.querySelector(".day-value");
 
-  const dayValue = dayInput.value;
-  const monthValue = monthInput.value;
-  const yearValue = yearInput.value;
+  const dayError = document.querySelector(".day-error");
+  const monthError = document.querySelector(".month-error");
+  const yearError = document.querySelector(".year-error");
+
+  const dayValue = dayInput.value.trim();
+  const monthValue = monthInput.value.trim();
+  const yearValue = yearInput.value.trim();
+
+  const currentYear = new Date().getFullYear();
+
+  console.log(currentYear);
+
+  if (dayValue === "") {
+    dayError.textContent = "This field is required";
+  } else {
+    dayError.textContent = "";
+
+    if (!isNumber(dayValue) || dayValue < 1 || dayValue > 31) {
+      dayError.textContent = "Must be a valid day";
+    } else {
+      dayError.textContent = "";
+    }
+  }
+
+  if (monthValue === "") {
+    monthError.textContent = "This field is required";
+  } else {
+    monthError.textContent = "";
+
+    if (!isNumber(monthValue) || monthValue < 1 || monthValue > 12) {
+      monthError.textContent = "Must be a valid month";
+    } else {
+      monthError.textContent = "";
+    }
+  }
+
+  if (yearValue === "") {
+    yearError.textContent = "This field is required";
+  } else {
+    yearError.textContent = "";
+
+    if (!isNumber(yearValue) || yearValue < 1900 || yearValue > currentYear) {
+      yearError.textContent = "Must be a valid year";
+    } else {
+      yearError.textContent = "";
+    }
+  }
 
   if (isNaN(dayValue) || isNaN(monthValue) || isNaN(yearValue)) {
     document.getElementById("result").textContent =
@@ -63,9 +107,10 @@ function validateDate() {
 }
 
 function isValidDate(yearValue, monthValue, dayValue) {
+  const currentYear = new Date().getFullYear();
   if (
     yearValue < 1900 ||
-    yearValue > 2099 ||
+    yearValue > currentYear ||
     monthValue < 1 ||
     monthValue > 12 ||
     dayValue < 1
@@ -75,4 +120,10 @@ function isValidDate(yearValue, monthValue, dayValue) {
 
   const lastDayInMonth = new Date(yearValue, monthValue, 0).getDate();
   return dayValue <= lastDayInMonth;
+}
+
+function isNumber(str) {
+  const regex = /^[+-]?\d+(\.\d+)?$/;
+
+  return regex.test(str);
 }
